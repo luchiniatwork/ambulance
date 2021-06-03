@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  },
+  {
+    "id": "2",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  },
+  {
+    "id": "3",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  },
+  {
+    "id": "4",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  },
+  {
+    "id": "5",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  },
+  {
+    "id": "6",
+    "nameRef": "gas",
+    "iconRef": "gas",
+    "state": "OFF"
+  }
+]

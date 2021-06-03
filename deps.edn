@@ -15,6 +15,10 @@
   hodur/engine                                    {:mvn/version "0.1.8"}
   hodur/lacinia-schema                            {:mvn/version "0.1.2"}
 
+  ;; GPIO stuff
+  io.helins/linux.gpio                            {:mvn/version "2.0.1"}
+  io.helins/linux.i2c                             {:mvn/version "2.0.0"}
+
   ;; Logging
   com.taoensso/timbre                             {:mvn/version "5.1.2"}
   org.slf4j/slf4j-nop                             {:mvn/version "2.0.0-alpha1"}
@@ -27,7 +31,7 @@
  :aliases
  {:cider {:extra-deps
           {nrepl/nrepl                                   {:mvn/version "0.6.0"}
-           cider/cider-nrepl                             {:mvn/version "0.26.0"}}
+           cider/cider-nrepl                             {:mvn/version "0.25.9"}}
           :main-opts
           ["-m" "nrepl.cmdline"
            "--middleware" "[\"cider.nrepl/cider-middleware\"]"

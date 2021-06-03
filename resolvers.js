@@ -28,10 +28,7 @@ const resolvers = {
             updateModule(moduleDummyData, changingModule);
 
             // Determine final module state
-            const newModule = {
-                ...module,
-                state: (module.state === 'ON' ? 'OFF' : 'ON')
-            }
+            const newModule = calculateToggleState(module, (module.state === 'ON' ? 'OFF' : 'ON'))
 
             // Update module state
             updateModule(moduleDummyData, newModule);

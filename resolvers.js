@@ -1,37 +1,5 @@
 const moduleDummyData = require('./moduleData.json');
-
-/**
- * The objects that represent a Module must have an "id" property at the root level.
- * @param {Array} modules An array of objects that represent a Module.
- * @param {String} id The ID of the module that will be returned.
- * @returns A single object that represent a Module.
- */
-const getModuleById = (modules, id) => {
-    return modules.find(module => module.id === id);
-}
-
-/**
- * Calculates the a new object that represents a Module.
- * @param {Object} module Object that represents a Module
- * @param {String} state The state that will be changed to."ON", "OFF", "CHANGING", or "DISABLED"
- * @returns Object that represents a module with the changed state. 
- */
-const calculateToggleState = (module, state) => {
-    return {
-        ...module,
-        state: state
-    }
-}
-
-const updateModule = (modules, module) => {
-    for (let i = 0; i < modules.length; i++) {
-        if (modules[i].id === module.id) {
-            modules[i] = module;
-            break;
-        }
-    }
-    return null;
-}
+const { getModuleById, calculateToggleState, updateModule } = require('./utils')
 
 const resolvers = {
     Module: {
@@ -69,9 +37,9 @@ const resolvers = {
             updateModule(moduleDummyData, newModule);
 
             // Find requested module in updated data
-            const m = moduleDummyData.find(module => module.id === args.toggleModuleId);
+            const updatedModule = getModuleById(moduleDummyData, toggleModuleId);
 
-            return m;
+            return updatedModule;
         }
     }
 }

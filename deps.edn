@@ -1,0 +1,43 @@
+{:sources ["src" "resouces"]
+
+ :deps
+ {org.clojure/clojure                             {:mvn/version "1.10.3"}
+  org.clojure/core.async                          {:mvn/version "1.2.603"}
+
+  ;; dependency injection
+  integrant/integrant                             {:mvn/version "0.7.0"}
+
+  ;; Lacinia/Pedestal for GraphQL
+  com.walmartlabs/lacinia                         {:mvn/version "0.36.0"}
+  com.walmartlabs/lacinia-pedestal                {:mvn/version "0.14.0-alpha-1"}
+
+  ;; Hodur for schema parsing
+  hodur/engine                                    {:mvn/version "0.1.8"}
+  hodur/lacinia-schema                            {:mvn/version "0.1.2"}
+
+  ;; Logging
+  com.taoensso/timbre                             {:mvn/version "4.10.0"}
+  org.slf4j/slf4j-nop                             {:mvn/version "2.0.0-alpha1"}
+
+  ;; utilities
+  metosin/jsonista                                {:mvn/version "0.2.7"}
+  camel-snake-kebab/camel-snake-kebab             {:mvn/version "0.4.2"}
+  luchiniatwork/ambiente                          {:mvn/version "0.1.4"}}
+
+ :aliases
+ {:repl {:extra-paths ["dev"]
+         :extra-deps
+         {nrepl/nrepl {:mvn/version "0.6.0"}
+          cider/cider-nrepl {:mvn/version "0.26.0"}}
+         :main-opts
+         ["-m" "nrepl.cmdline" "--middleware" "[\"cider.nrepl/cider-middleware\"]"]}
+
+  :dev {:extra-paths ["dev"]
+        :extra-deps
+        {integrant/repl                                 {:mvn/version "0.3.1"}}}
+
+  :test {:extra-paths ["test"]
+         :extra-deps
+         {lambdaisland/kaocha                           {:mvn/version "1.0.732"}}
+         :main-opts
+         ["-m" "kaocha.runner"]}}}

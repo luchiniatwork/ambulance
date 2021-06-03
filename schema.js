@@ -28,6 +28,9 @@ const typeDefs = gql`
     type Mutation {
         toggle(toggleModuleId: ID!): Toggle
     }
+    type Subscription {
+        moduleUpdated: Module
+    }
 `;
 
 module.exports = { typeDefs }

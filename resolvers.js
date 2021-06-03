@@ -1,5 +1,9 @@
+const { PubSub } = require('apollo-server');
+
 const moduleDummyData = require('./moduleData.json');
 const { getModuleById, calculateToggleState, updateModule } = require('./utils')
+
+const pubsub = new PubSub();
 
 const resolvers = {
     Module: {
@@ -8,6 +12,11 @@ const resolvers = {
                 return 'Toggle';
             }
             return null;
+        }
+    },
+    Subscription: {
+        moduleUpdated: {
+            subscribe: () => pubsub.asyncIterator(['MODULE_UPDATED'])
         }
     },
     Query: {
@@ -36,8 +45,11 @@ const resolvers = {
             // Find requested module in updated data
             const updatedModule = getModuleById(moduleDummyData, toggleModuleId);
 
+            // Publish to the subscription
+            pubsub.publish('MODULE_UPDATED', { moduleUpdated: updatedModule })
+
             return updatedModule;
-        }
+        },
     }
 }
 

@@ -8,7 +8,26 @@
 
 ### Mutation
 
-`toggle(toggleModuleId: ID)` as defined in `resolvers.js` changes the state of a single toggle module specified by its ID. It returns the updated module.
+* `toggle(toggleModuleId: ID)` as defined in `resolvers.js` changes the state of a single toggle module specified by its ID. It returns the updated module.
+
+### Subscription
+
+* `moduleUpdated` returns the individual module that has been changed. 
+
+Example:
+
+```gql
+subscription {
+  moduleUpdated {
+    id
+    # other Module fields
+    ... on Toggle {
+      state
+      # other Toggle specific fields
+    }
+  }
+}
+```
 
 ### utility functions
 

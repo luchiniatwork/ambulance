@@ -12,7 +12,7 @@
 
 ### Subscription
 
-* `moduleUpdated` returns the individual module that has been changed. 
+* `moduleUpdated` returns the individual module that has been changed. Currently, the only thing that activates this field is the toggle mutation.
 
 Example:
 

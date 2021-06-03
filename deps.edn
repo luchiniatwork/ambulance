@@ -18,6 +18,7 @@
   ;; GPIO stuff
   io.helins/linux.gpio                            {:mvn/version "2.0.1"}
   io.helins/linux.i2c                             {:mvn/version "2.0.0"}
+  io.helins/linux.i2c.mcp342x                     {:mvn/version "2.0.0-beta0"}
 
   ;; Logging
   com.taoensso/timbre                             {:mvn/version "5.1.2"}

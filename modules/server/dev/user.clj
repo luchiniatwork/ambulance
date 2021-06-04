@@ -20,10 +20,31 @@
     (let [buffer (gpio/buffer out-handle)]
       (loop [leds (cycle [:led-1
                           :led-2])]
-        (Thread/sleep 1000)
+        (Thread/sleep 5000)
         (gpio/write out-handle
                     (gpio/set-line+ buffer
                                     {(first  leds) true
                                      (second leds) false}))
         #_(gpio/event button-watcher)
-        (recur (rest leds))))))
+        (recur (rest leds)))))
+
+  )
+
+(comment
+  (with-open [device (gpio/device "/dev/gpiochip0")
+              handle (gpio/handle device
+                                  {17 {:gpio/state false
+                                       :gpio/tag :switch-1}
+                                   18 {:gpio/state true
+                                       :gpio/tag :switch-2}}
+                                  {:gpio/direction :output})]
+    (let [buffer (gpio/buffer handle)]
+      (Thread/sleep 2000)
+      (doseq [i (range 5)]
+        (println i (if (= 0 (mod i 2)) true false))
+        (gpio/write handle
+                    (gpio/set-line+ buffer
+                                    {:switch-1 (if (= 0 (mod i 2)) true false)
+                                     :switch-2 (if (= 0 (mod i 2)) false true)}))
+        (Thread/sleep 2000))))
+  )
